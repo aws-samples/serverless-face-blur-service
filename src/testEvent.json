@@ -1,0 +1,20 @@
+{
+    "Records": [
+        {
+            "messageId": "e9a12dd2-1234-1234-1234-123456789012",
+            "receiptHandle": "AQEBnjT2rUH+kmEXAMPLE",
+            "body": "{\"Records\":[{\"eventVersion\":\"2.1\",\"eventSource\":\"aws:s3\",\"awsRegion\":\"us-east-1\",\"eventTime\":\"2021-06-21T19:48:14.418Z\",\"eventName\":\"ObjectCreated:Put\",\"userIdentity\":{\"principalId\":\"AWS:AROA3DTKMEXAMPLE:username\"},\"requestParameters\":{\"sourceIPAddress\":\"73.123.123.123\"},\"responseElements\":{\"x-amz-request-id\":\"AZ39QWJFVEQJW9RBEXAMPLE\",\"x-amz-id-2\":\"MLpNwwQGQtrNai/EXAMPLE\"},\"s3\":{\"s3SchemaVersion\":\"1.0\",\"configurationId\":\"5f37ac0f-1234-1234-82f12343-cbc8faf7a996\",\"bucket\":{\"name\":\"s3-face-blur-source\",\"ownerIdentity\":{\"principalId\":\"EXAMPLE\"},\"arn\":\"arn:aws:s3:::s3-face-blur-source\"},\"object\":{\"key\":\"face.jpg\",\"size\":3541,\"eTag\":\"EXAMPLE\",\"sequencer\":\"123456789\"}}}]}",
+            "attributes": {
+                "ApproximateReceiveCount": "6",
+                "SentTimestamp": "1624304902103",
+                "SenderId": "AIDAJHIPREXAMPLE",
+                "ApproximateFirstReceiveTimestamp": "1624304902103"
+            },
+            "messageAttributes": {},
+            "md5OfBody": "12345",
+            "eventSource": "aws:sqs",
+            "eventSourceARN": "arn:aws:sqs:us-east-1:123456789012:s3-lambda-face-blur-S3EventQueue-ABCDEFG01234",
+            "awsRegion": "us-east-1"
+        }
+    ]
+}
