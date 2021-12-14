@@ -31,6 +31,40 @@ Resources:
     Properties:
       BucketName: !Ref DestinationBucketName
 
+  # Enforce HTTPS only access to S3 bucket #
+  BucketForImagePolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref SourceBucket
+      PolicyDocument:
+        Statement:
+        - Action: s3:*
+          Effect: Deny
+          Principal: "*"
+          Resource:
+          - !Sub "arn:aws:s3:::${SourceBucket}/*"
+          - !Sub "arn:aws:s3:::${SourceBucket}"
+          Condition:
+            Bool:
+              aws:SecureTransport: false
+
+  # Enforce HTTPS only access to S3 bucket #
+  BucketForImagePolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref DestinationBucket
+      PolicyDocument:
+        Statement:
+        - Action: s3:*
+          Effect: Deny
+          Principal: "*"
+          Resource:
+          - !Sub "arn:aws:s3:::${DestinationBucket}/*"
+          - !Sub "arn:aws:s3:::${DestinationBucket}"
+          Condition:
+            Bool:
+              aws:SecureTransport: false
+
   ## SQS Queue
   S3EventQueue:
     Type: "AWS::SQS::Queue"
@@ -45,7 +79,7 @@ Resources:
         Statement:
           - Sid: Allow-SendMessage-To-Queue-From-S3-Event-Notification
             Effect: Allow
-            Principal: 
+            Principal:
               Service: "s3.amazonaws.com"
             Action:
               - "sqs:SendMessage"
@@ -85,4 +119,3 @@ Resources:
           Properties:
             Queue: !GetAtt S3EventQueue.Arn
             BatchSize: 1
-
