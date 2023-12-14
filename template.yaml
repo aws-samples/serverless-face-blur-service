@@ -48,23 +48,6 @@ Resources:
             Bool:
               aws:SecureTransport: false
 
-  # Enforce HTTPS only access to S3 bucket #
-  BucketForImagePolicy:
-    Type: AWS::S3::BucketPolicy
-    Properties:
-      Bucket: !Ref DestinationBucket
-      PolicyDocument:
-        Statement:
-        - Action: s3:*
-          Effect: Deny
-          Principal: "*"
-          Resource:
-          - !Sub "arn:aws:s3:::${DestinationBucket}/*"
-          - !Sub "arn:aws:s3:::${DestinationBucket}"
-          Condition:
-            Bool:
-              aws:SecureTransport: false
-
   ## SQS Queue
   S3EventQueue:
     Type: "AWS::SQS::Queue"
