@@ -32,7 +32,7 @@ Resources:
       BucketName: !Ref DestinationBucketName
 
   # Enforce HTTPS only access to S3 bucket #
-  BucketForImagePolicy:
+  SourceBucketForImagePolicy:
     Type: AWS::S3::BucketPolicy
     Properties:
       Bucket: !Ref SourceBucket
@@ -49,7 +49,7 @@ Resources:
               aws:SecureTransport: false
 
   # Enforce HTTPS only access to S3 bucket #
-  BucketForImagePolicy:
+  DestinationBucketForImagePolicy:
     Type: AWS::S3::BucketPolicy
     Properties:
       Bucket: !Ref DestinationBucket
